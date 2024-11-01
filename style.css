@@ -34,6 +34,73 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for slide-up effect */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animations to specific sections */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* Add delay to main content and footer for a staggered appearance */
+main.fade-in {
+  animation-delay: 0.4s;
+}
+
+footer.fade-in {
+  animation-delay: 0.6s;
+}
+
+/* Animation for buttons on hover for smooth scaling */
+.buttons-section button {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.buttons-section button:hover {
+  transform: scale(1.05);
+}
+
+/* Smooth scrolling for the page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation for dropdown menu (appearing smoothly) */
+.nav-item .dropdown-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Animations */
 /* General styling for header */
@@ -174,7 +241,7 @@ header {
     flex-direction: column;
     background-color: #0073e6;
     position: absolute;
-    top: 100%;
+    top: 92%;
     left: 0;
     width: 100%;
     padding: 10px 0;
