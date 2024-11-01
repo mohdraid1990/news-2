@@ -1,0 +1,348 @@
+ /* CSS styling with variables */
+
+:root {
+  --font-main: Arial, sans-serif;
+  --color-bg: #f0f0f5;
+  --color-text: #333;
+  --color-header-bg: #333;
+  --color-nav-bg: #0073e6;
+  --color-logo: #fff;
+  --color-link: #fff;
+  --color-link-hover: #ff9800;
+  --color-button-bg: #0073e6;
+  --color-button-hover: #005bb5;
+  --color-footer-bg: #333;
+  --color-footer-link: #fff;
+  --color-footer-link-hover: #ff9800;
+  --color-form-bg: #fff;
+  --color-form-border: #ccc;
+  --color-box-shadow: rgba(0, 0, 0, 0.1);
+  --transition-duration: 0.3s;
+  --animation-duration: 0.5s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Animations */
+/* General styling for header */
+header {
+  padding-bottom: 10px;
+  position: relative;
+  z-index: 20;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+  background-color: #333;
+}
+
+.social-icons a {
+  color: #fff;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff9800;
+}
+
+.top-nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.top-nav-links a:hover {
+  color: #ff9800;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 20px;
+  background-color: #0073e6;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.main-nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.main-nav-links a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #ff9800;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.main-nav-links a:hover::after {
+  width: 100%;
+}
+
+.main-nav-links .nav-item {
+  position: relative;
+}
+
+/* Dropdown styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 25; /* Ensures dropdown appears above main content */
+  border-radius: 5px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dropdown-item img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.dropdown-item p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+.nav-item:hover .dropdown-content {
+  display: block;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .main-nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #0073e6;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 100;
+    animation: slideIn 0.5s ease forwards;
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  #menu-toggle:checked + .menu-icon + .main-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .dropdown-content {
+    display: none;
+  }
+}
+
+/* Main content styling */
+.main-image-section {
+  position: relative;
+  text-align: center;
+}
+
+.main-image-section img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.buttons-section {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.button-1, .button-2 {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+.button-1 {
+  background-color: var(--color-button-bg);
+  color: var(--color-logo);
+}
+
+.button-2 {
+  background-color: var(--color-text);
+  color: var(--color-logo);
+}
+
+.button-1:hover {
+  background-color: var(--color-button-hover);
+  transform: scale(1.05);
+}
+
+.button-2:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* Subscription form styling */
+.subscription-form {
+  background-color: var(--color-form-bg);
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 30px;
+  box-shadow: 0 0 10px var(--color-box-shadow);
+}
+
+.subscription-form h3 {
+  font-size: 18px;
+  color: var(--color-button-bg);
+  margin-bottom: 15px;
+}
+
+.subscription-form label {
+  display: block;
+  font-size: 14px;
+  color: var(--color-text);
+  margin-top: 10px;
+}
+
+.subscription-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid var(--color-form-border);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.subscription-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  font-size: 16px;
+  background-color: var(--color-button-bg);
+  color: var(--color-logo);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+}
+
+.subscription-form button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-logo);
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.footer-links a {
+  color: var(--color-footer-link);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color var(--transition-duration) ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-footer-link-hover);
+  text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
